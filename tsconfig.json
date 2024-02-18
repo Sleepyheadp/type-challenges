@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"lib": ["ES2015", "DOM"],
+		"strictNullChecks": true, // 不允许将null和undefined分配给其他类型
+		"noImplicitAny": true // 在没有明确指定类型且也无法进行类型推断的情况下禁止使用any类型。 implicit隐式的
+	}
+}
