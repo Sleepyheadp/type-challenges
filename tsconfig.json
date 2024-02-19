@@ -1,7 +1,38 @@
 {
+	"include": ["**/*"], // 指定要编译的文件 **/*表示src目录下的所有文件
+	"exclude": ["node_modules"], // 指定不编译的文件
+	// "files": [], // 指定要编译的文件
 	"compilerOptions": {
 		"lib": ["ES2015", "DOM"],
-		"strictNullChecks": true, // 不允许将null和undefined分配给其他类型
-		"noImplicitAny": true // 在没有明确指定类型且也无法进行类型推断的情况下禁止使用any类型。 implicit隐式的
+		"rootDir": "./src", // 设置 rootDir 为 src 目录
+		"outDir": "./dist", // 设置编译后的文件输出目录为 dist 目录
+		"strict": false, // 是否启用静态类型检查
+		"strictNullChecks": true, // 是否启用严格的null检查
+		"noImplicitAny": true, // 在没有明确指定类型且也无法进行类型推断的情况下禁止使用any类型。 implicit隐式的
+		"removeComments": true // 删除注释:在tsc demo.ts编译成demo.js时，demo.js中的注释将被删除
 	}
 }
+
+/* 
+1.扩展:files和include的区别
+files 和 include 都是在 tsconfig.json 文件中指定要编译的 TypeScript 文件。但是它们的工作方式有所不同：
+files：这个选项接受一个文件列表，这些文件会被 TypeScript 编译器直接包含进来。你需要为每个文件提供一个相对于 tsconfig.json 文件的路径。这个列表只包含你明确指定的文件，不会包含其他任何文件，也不会解析 files 列表中的文件引用其他文件。
+include：这个选项接受一个文件模式列表，TypeScript 编译器会包含匹配这些模式的所有文件。你可以使用通配符（例如 * 表示任何文件，** / * 表示任何目录中的任何文件）。include 选项会解析匹配的文件引用的文件。
+在大多数情况下，你应该使用 include 选项，因为它更灵活，可以轻松地包含项目中的多个文件和目录。只有在你需要精确控制要包含哪些文件时，才应该使用 files 选项。
+*/
+
+/* 
+	- 编译ES6语法到ES5语法: allowJS: true, "target": "es5"
+	"target":'es5' ,  // 这一项默认是开启的，你必须要保证它的开启，才能转换成功
+	"allowJs":true,   // 这个配置项的意思是联通 compiled
+*/
+
+/* 
+	- sourceMap: true, // 生成对应的map文件
+	sourceMap 简单说，Source map 就是一个信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。有了它，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码。这无疑给开发者带来了很大方便。
+*/
+
+/* 
+	- noUnusedLocals: true, // 检查没有使用的局部变量
+	- noUnusedParameters: true, // 检查没有使用的参数
+*/
