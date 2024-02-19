@@ -2,47 +2,12 @@
 // 1.给变量添加基本类型
 let num: number = 1;
 // 2.给对象添加基本类型
+// 对象
 let person: {
 	name: string;
 	age: number;
 } = {
 	name: "capoo",
-	age: 18,
-};
-// 2-1.使用type关键字定义可复用的类型
-type Person2 = {
-	name: string;
-	age: number;
-	// 2-2.可选的对象类型属性
-	sexy?: string; // 可选对象类型属性
-	toSay?(): string; // 函数的可选应该这样写
-};
-let person2: Person2 = {
-	name: "capoo",
-	age: 18,
-	sexy: "man",
-	toSay() {
-		const res = "hello ts";
-		console.log(res);
-		return res;
-	},
-};
-// 3.类型注释:ts会自动推断变量的类型,但是我们用ts就是为了自己设置类型的
-let str = "hello ts";
-let num2 = 2;
-
-// 6.定义嵌套的对象类型
-interface A_6 {
-	name: string;
-}
-interface B_6 {
-	A_6: A_6;
-	age: number;
-}
-let C_6: B_6 = {
-	A_6: {
-		name: "tom",
-	},
 	age: 18,
 };
 // 7.给数组变量添加类型
@@ -65,6 +30,58 @@ let pds: Pd_7[] = [
 		sex: "woman",
 	},
 ];
+// 扩展:类类型
+class PersonDemo {
+	name: string;
+	age: number;
+	constructor(name: string, age: number) {
+		this.name = name;
+		this.age = age;
+	}
+}
+let pOne: PersonDemo = new PersonDemo("capoo", 18);
+console.log("类类型pOne:", pOne);
+// 函数类型注解语法
+// 创建一个变量返回类型为string,函数实现是一个箭头函数,返回一个字符串.
+let functionType: () => string = () => {
+	return "函数类型注解语法";
+};
+// 2-1.使用type关键字定义可复用的类型
+type Person2 = {
+	name: string;
+	age: number;
+	// 2-2.可选的对象类型属性
+	sexy?: string; // 可选对象类型属性
+	toSay?(): string; // 函数的可选应该这样写
+};
+let person2: Person2 = {
+	name: "capoo",
+	age: 18,
+	sexy: "man",
+	toSay() {
+		const res = "hello ts";
+		console.log(res);
+		return res;
+	},
+};
+// 3.类型注释type annotaion:ts会自动推断变量的类型,但是我们用ts就是为了自己设置类型的
+let str = "hello ts";
+let num2 = 2;
+
+// 6.定义嵌套的对象类型
+interface A_6 {
+	name: string;
+}
+interface B_6 {
+	A_6: A_6;
+	age: number;
+}
+let C_6: B_6 = {
+	A_6: {
+		name: "tom",
+	},
+	age: 18,
+};
 // 8.设置多个类型
 let num_8: number | string;
 num_8 = "one";
@@ -120,7 +137,7 @@ let arrowFunc = (a: number, b: number): number => a + b;
 arrowFunc(1, 2);
 // 12.函数作为参数值,变量值或对象方法时的类型
 // 首先定义一个箭头函数
-type Arrow_12 = (res: string) => void; // {}空对象需要有返回值,void不需要.
+type Arrow_12 = (res: string) => void; // {}空对象需要有返回值,void表示没有任何的返回值.
 // 箭头函数作为函数参数
 function request_12(callback: Arrow_12) {
 	callback("success");
