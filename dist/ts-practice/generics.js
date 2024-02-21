@@ -7,6 +7,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+function add(a, b) {
+    return a + b;
+}
+console.log(add("capoo", 2));
 function join(arr1, arr2) {
     return __spreadArray(__spreadArray([], arr1, true), arr2, true);
 }
@@ -27,19 +31,47 @@ function PrintType(t, k) {
     console.log("Map:".concat(t, ":").concat(typeof t, ", ").concat(k, ":").concat(typeof k));
 }
 PrintType("a", 1);
+var PD_4 = (function () {
+    function PD_4(person) {
+        this.person = person;
+    }
+    PD_4.prototype.select = function (index) {
+        return this.person[index].name;
+    };
+    return PD_4;
+}());
+var chooseOne = new PD_4([
+    { name: "Tom" },
+    { name: "Jerry" },
+    { name: "capoo" },
+]);
+console.log("generic extends:", chooseOne.select(2));
 function displayTitle(t) {
-    console.log(t.title, t.price, t.inStock);
+    console.log(t.title);
 }
-var product = {
-    title: "cloth",
-    price: 99,
-    inStock: true,
+var coat = {
+    title: "coat",
 };
-displayTitle(product);
+displayTitle(coat);
 var tshirt = {
     title: "体恤",
-    price: 59.9,
-    inStock: false,
     size: "L",
 };
 displayTitle(tshirt);
+function getLength_0(sth) {
+    console.log(sth.length);
+}
+function getLength(sth) {
+    console.log(sth.length);
+}
+function getLength_2(sth) {
+    console.log(sth.length);
+}
+var LengthWise_3 = (function () {
+    function LengthWise_3() {
+    }
+    return LengthWise_3;
+}());
+function getLength_3(sth) {
+    console.log(sth.length);
+}
