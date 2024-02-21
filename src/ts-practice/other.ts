@@ -13,10 +13,10 @@ function forNever(): never {
 }
 
 // - 2.给函数参数和返回值都进行类型注解
-function add({ a, b }: { a: number; b: number }): number {
+function add_2({ a, b }: { a: number; b: number }): number {
 	return a + b;
 }
-add({ a: 1, b: 2 });
+add_2({ a: 1, b: 2 });
 
 // - 3.数组类型的定义
 // 示例一:值是一个数组,类型为string或者number
@@ -37,13 +37,13 @@ const tupleArr: [string, number, boolean][] = [
 
 // - 5.联合类型和类型保护
 // 5.1 联合类型:表示取值可以为多种类
-function getLength(something: string | number): number | string {
+function getLength_5_1(something: string | number): number | string {
 	return something;
 }
 // 5.2 类型保护:当一个联合类型的变量被赋值为一个类型的值,访问不同类型的属性或方法时,会报错
 // 5.2.1 类型保护:通过类型断言的方式
 // <string>sth
-function getLength_2(something: string | number): number | string {
+function getLength_5_2(something: string | number): number | string {
 	// <string>something:类型断言的一种方式,告诉编译器,这个参数是string类型
 	// 只有string类型的参数才有length属性
 	if ((<string>something).length) {
@@ -83,6 +83,13 @@ function selectTwo(sth: Say | Run): void {
 }
 
 // 5.2.3 类型保护:通过typeof关键字
+// 示例一:引用变量或属性的类型
+const arr = [""];
+type r = typeof arr;
+const _arr: r = ["c"]; // _arr是一个元素为string的数组
+console.log("typeof 关键字", _arr);
+
+// 示例二:检测变量类型
 function isNumber(a: string | number, b: string | number): number {
 	if (typeof a === "number" && typeof b === "number") {
 		return a + b;
