@@ -5,6 +5,10 @@ type First<T extends any[]> = T extends [] ? never : T[0];
 function First_js(arr) {
 	if (arr.length > 0) {
 		return arr[0];
+	} else {
+		return "arr is a empty array.";
 	}
 }
-First([3, 2, 1]);
+const r_1 = First([() => 123, { a: "string" }]);
+const r_2 = First([]);
+const r_3 = First([undefined, undefined]);
