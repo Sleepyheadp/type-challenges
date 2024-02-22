@@ -1,4 +1,4 @@
-function convert(arr) {
+function convert(arr, arr2) {
 	const res = [];
 	for (const i of arr) {
 		const obj = { [i]: i };
